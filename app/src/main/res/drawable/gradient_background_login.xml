@@ -3,6 +3,6 @@
     android:shape="rectangle">
     <gradient
         android:angle="270"
-        android:endColor="@color/color_login_display_text"
-        android:startColor="@color/color_login_activity_background" />
+        android:endColor="@color/color_login_activity_background_end"
+        android:startColor="@color/color_login_help_button_label_push_dark" />
 </shape>

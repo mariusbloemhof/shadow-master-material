@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background_login"
     android:paddingBottom="0dp"
+    android:paddingTop="20dp"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
     <EditText

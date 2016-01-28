@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 break;
             case 1:
                 fragment = new SignupFragment();
-                title = getString(R.string.title_friends);
+                title = getString(R.string.title_signup);
                 break;
             case 2:
                 fragment = new MessagesFragment();
