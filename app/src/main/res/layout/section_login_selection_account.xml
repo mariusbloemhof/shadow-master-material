@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/register_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="12dp"
+    android:paddingTop="5dp">
+
+    <EditText
+        android:id="@+id/edtEmail_address_register"
+        style="@style/Shadow.Text.Email"
+        android:layout_width="300dp"
+        android:layout_height="36dp"
+        android:background="@drawable/selector_edit_corner_top"
+        android:drawableLeft="@drawable/ic_email_black"
+        android:ems="10"
+        android:hint="@string/email_address_enter"
+        android:inputType="textEmailAddress"
+        android:paddingRight="5dp"
+        android:textColor="@color/colorBlack" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="300dp"
+        android:layout_height="1dip"
+        android:layout_below="@+id/edtEmail_address_register"
+        android:background="@color/color_login_help_button_label" />
+
+    <EditText
+        android:id="@+id/edtPassword_register"
+        style="@style/Shadow.Text.Email"
+        android:layout_width="300dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/view_line"
+        android:background="@drawable/selector_edit_corner_bottom"
+        android:drawableLeft="@drawable/ic_locked_black"
+        android:ems="10"
+        android:hint="@string/password_enter"
+        android:inputType="textPassword"
+        android:paddingBottom="2dp"
+        android:paddingRight="5dp"
+        android:textColor="@color/colorBlack" />
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/Shadow.Button.ThirdPartyLogin"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Sign in"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/linearLayout"
+        android:background="@drawable/selector_button_login"
+        android:layout_below="@+id/edtPassword_register"
+        android:drawableLeft="@drawable/ic_pencil_white" />
+
+
+</RelativeLayout>

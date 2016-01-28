@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+    <item
+        android:id="@+id/action_back"
+        android:icon="@drawable/ic_back_orange_64"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_back_text"
+        android:title="Back"
+        app:showAsAction="ifRoom"
+
+        />
+
+
+</menu>

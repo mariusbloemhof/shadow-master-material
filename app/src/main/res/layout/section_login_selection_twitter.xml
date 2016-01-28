@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/twitter_login_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignLeft="@+id/facebook_login_layout"
+    android:layout_below="@+id/facebook_login_layout"
+    android:gravity="center_horizontal">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|fill"
+        android:paddingBottom="2dp">
+
+        <Button
+            android:id="@+id/twitter_login"
+            style="@style/Shadow.Button.ThirdPartyLogin"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:background="@drawable/selector_button_twitter"
+            android:drawableLeft="@drawable/ic_twitter_login_logo"
+            android:text="   Sign up with Twitter"
+            android:visibility="visible" />
+
+    </LinearLayout>
+</RelativeLayout>

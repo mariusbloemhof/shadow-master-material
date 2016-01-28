@@ -1,0 +1,25 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape>
+            <stroke android:width="2dp" android:color="@color/color_facebook_login_button_push" />
+            <gradient android:angle="180" android:endColor="@color/color_facebook_login_button_push" android:startColor="@color/color_facebook_login_button_push" />
+            <corners android:bottomLeftRadius="2dp" android:bottomRightRadius="2dp" android:topLeftRadius="2dp" android:topRightRadius="2dp" />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape>
+            <stroke android:width="2dp" android:color="@color/color_facebook_login_button_focus" />
+            <gradient android:angle="180" android:endColor="@color/color_facebook_login_button_focus" android:startColor="@color/color_facebook_login_button_focus" />
+            <corners android:bottomLeftRadius="2dp" android:bottomRightRadius="2dp" android:topLeftRadius="2dp" android:topRightRadius="2dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <stroke android:width="2dp" android:color="@color/color_facebook_login_button" />
+            <gradient android:angle="180" android:endColor="@color/color_facebook_login_button" android:startColor="@color/color_facebook_login_button" />
+            <corners android:bottomLeftRadius="2dp" android:bottomRightRadius="2dp" android:topLeftRadius="2dp" android:topRightRadius="2dp" />
+        </shape>
+    </item>
+</selector>
+

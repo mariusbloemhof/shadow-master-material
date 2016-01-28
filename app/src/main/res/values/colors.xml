@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F50057</color>
+    <color name="colorPrimaryDark">#C51162</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#FF80AB</color>
+
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorTransparent">#00FFFFFF</color>
+    <color name="color_login_button">#c5cfe2</color>
+    <color name="color_login_button_push">#91481d</color>
+    <color name="color_login_button_focus">#35CCCCCC</color>
+    <color name="color_login_help_button_label">#E0E0E0</color>
+    <color name="color_login_help_button_label_push">#AAAAAA</color>
+    <color name="color_login_help_button_label_push_dark">#616161</color>
+    <color name="color_login_help_button_label_focus">#CCCCCC</color>
+    <color name="color_login_text_hint">#AAAAAA</color>
+    <color name="color_login_display_text">@android:color/white</color>
+    <color name="color_facebook_login_button">#3B5998</color>
+    <color name="color_facebook_login_button_push">#2E4677</color>
+    <color name="color_facebook_login_button_focus">#304F8B</color>
+    <color name="color_twitter_login_button">#2DAAE2</color>
+    <color name="color_twitter_login_button_push">#2588B5</color>
+    <color name="color_twitter_login_button_focus">#2788BE</color>
+    <color name="color_login_activity_background">#bdccd1</color>
+    <color name="color_login_background">#39a141</color>
+    <color name="color_login_pressed">#466c49</color>
+    <color name="color_signup_background">#869e88</color>
+    <color name="color_signup_pressed">#5b6c5d</color>
+    <color name="color_login_activity_background_start">#464f60</color>
+    <color name="color_login_activity_background_end">#374050</color>
+    <color name="color_actionbar_text">#e1661f</color>
+    <color name="color_actionbar_background">#3d3d3d</color>
+</resources>
