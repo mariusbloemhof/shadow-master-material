@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.ArrayRes;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
@@ -75,11 +76,14 @@ public class SignupFragment extends Fragment {
         edtSecurityPhoneNo.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
         Button btnsignupBack = (Button)rootView.findViewById(R.id.btn_back_signup);
-//        btnsignupBack.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
+        btnsignupBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                if(getFragmentManager().getBackStackEntryCount() >= 0)
+                {
+                    getFragmentManager().popBackStackImmediate();
+                }
+            }
+        });
 
         Button btnsignupNext = (Button)rootView.findViewById(R.id.btn_next_signup);
         btnsignupNext.setOnClickListener(new View.OnClickListener() {
