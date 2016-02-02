@@ -196,33 +196,6 @@
         android:backgroundTint="@color/windowBackground"
         android:orientation="horizontal">
 
-        <LinearLayout
-            style="?android:attr/buttonBarStyle"
-            android:backgroundTint="@color/windowBackground"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <Button
-                style="?android:attr/buttonBarButtonStyle"
-                android:background="@drawable/selectable_item_background"
-                android:id="@+id/btn_back_signup"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/prev"
-                android:textColor="@color/colorPrimary" />
-
-            <Button
-                style="?android:attr/buttonBarButtonStyle"
-                android:background="@drawable/selectable_item_background"
-                android:id="@+id/btn_next_signup"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/next"
-                android:textColor="@color/colorPrimary" />
-        </LinearLayout>
     </RelativeLayout>
 
 

@@ -37,7 +37,6 @@ public class SignupFragment extends Fragment {
     protected EditText edtLastName; //edtSignup_first_name
     protected EditText edtMobileNo; //edtSignup_first_name
     protected EditText edtSecurityPhoneNo;
-    protected View rootView;
 
 
     public SignupFragment() {
@@ -53,49 +52,47 @@ public class SignupFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.activity_signup, container, false);
+        View view = inflater.inflate(R.layout.activity_signup, container, false);
+        return view;
+    }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+        View view = getView();
         InitializeSpinner(R.id.spnMedical_aid_provider, R.array.medical_aid_provider_arrays, "Medical Aid Provider");
         InitializeSpinner(R.id.spnSecurity_provider, R.array.security_provider_arrays, "Security Company");
 
         ParseUser parseUser = ParseUser.getCurrentUser();
         if (parseUser != null) {
-            edtFirstName = (EditText)rootView.findViewById(R.id.edtSignup_first_name);
+            edtFirstName = (EditText)view.findViewById(R.id.edtSignup_first_name);
             edtFirstName.setText((String) parseUser.get("first_name"));
-            edtLastName = (EditText)rootView.findViewById(R.id.edtSignup_last_name);
+            edtLastName = (EditText)view.findViewById(R.id.edtSignup_last_name);
             edtLastName.setText((String) parseUser.get("last_name"));
         }
-        edtMobileNo = (EditText)rootView.findViewById(R.id.edtSignup_mobile_no);
+        edtMobileNo = (EditText)view.findViewById(R.id.edtSignup_mobile_no);
         edtMobileNo.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         edtMobileNo.setText(getMy10DigitPhoneNumber());
 
         InitBirthDate();
 
-        edtSecurityPhoneNo = (EditText)rootView.findViewById(R.id.edtSecurity_provider_contact_no);
+        edtSecurityPhoneNo = (EditText)view.findViewById(R.id.edtSecurity_provider_contact_no);
         edtSecurityPhoneNo.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
-        Button btnsignupBack = (Button)rootView.findViewById(R.id.btn_back_signup);
-        btnsignupBack.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                if(getFragmentManager().getBackStackEntryCount() >= 0)
-                {
-                    getFragmentManager().popBackStackImmediate();
-                }
-            }
-        });
 
-        Button btnsignupNext = (Button)rootView.findViewById(R.id.btn_next_signup);
-        btnsignupNext.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent intentMap = new Intent(view.getContext(), MapsActivity.class);
-                startActivityForResult(intentMap, 0);
-            }
-        });
+
+//        Button btnsignupNext = (Button)view.findViewById(R.id.btn_next_signup);
+//        btnsignupNext.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                Intent intentMap = new Intent(view.getContext(), MapsActivity.class);
+//                startActivityForResult(intentMap, 0);
+//            }
+//        });
 
         // Inflate the layout for this fragment
-        return rootView;
     }
+
 
     @Override
     public void onAttach(Activity activity) {
@@ -107,7 +104,10 @@ public class SignupFragment extends Fragment {
         super.onDetach();
     }
 
-    private void InitializeSpinner(@IdRes int spinnerid, @ArrayRes int arrayid, String defaultText){
+    private void InitializeSpinner(@IdRes int spinnerid, @ArrayRes int arrayid, String defaultText)
+    {
+        View view = getView();
+
         List<String> list = new ArrayList<String>();
         list.addAll(Arrays.asList(getResources().getStringArray(arrayid)));
         list.add(defaultText);
@@ -120,7 +120,7 @@ public class SignupFragment extends Fragment {
             }
         };
 
-        Spinner spinner = (Spinner)rootView.findViewById(spinnerid);
+        Spinner spinner = (Spinner)view.findViewById(spinnerid);
 
         dataAdapter.setDropDownViewResource(R.layout.styles_spinner_dropdown);
         spinner.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
@@ -142,9 +142,10 @@ public class SignupFragment extends Fragment {
     }
 
     private void InitBirthDate() {
-//get the reference of this edit text field
-        final EditText  etNICNO_Sender=(EditText)rootView.findViewById(R.id.edtDate_of_birth);
-  /*add textChangeListner with TextWatcher argument
+        //get the reference of this edit text field
+        View view = getView();
+        final EditText  etNICNO_Sender=(EditText)view.findViewById(R.id.edtDate_of_birth);
+        /*add textChangeListner with TextWatcher argument
          by adding text change listner with text watcher we can get three methods of
          Edit Text 1) onTextChanged 2) beforeTextChanged 3) afterTextChanged
          these methods work when user types in text feild.

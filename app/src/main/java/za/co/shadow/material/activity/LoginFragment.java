@@ -1,5 +1,6 @@
 package za.co.shadow.material.activity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -29,7 +30,6 @@ public class LoginFragment extends Fragment {
     protected Button mBtnSignupFaceBook;
     protected ParseUser parseUser;
     protected String name;
-    protected View rootView;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -46,24 +46,22 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        rootView = null;
-        rootView = inflater.inflate(R.layout.activity_login_selection, container, false);
+        View view = inflater.inflate(R.layout.activity_login_selection, container, false);
 
         parseUser = ParseUser.getCurrentUser();
-//        Parse.enableLocalDatastore((Context)rootView.getContext());
-//        Parse.initialize(rootView.getContext(), "0cJSz075MogqVzprRn36GXO6m1ur547EN8fVhOF4", "nafYF4kwB41R4AyTGZY7j0oGPKMVh5DXNzxurWjt");
-//        ParseFacebookUtils.initialize(rootView.getContext());
-//        ParseAnalytics.trackAppOpenedInBackground(this.getContext());
 
-        Button btnsignup = (Button) rootView.findViewById(R.id.btn_login);
+        Button btnsignup = (Button) view.findViewById(R.id.btn_login);
         btnsignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+//                MainActivity activity = (MainActivity) getActivity();
+//                activity.onSignupPressed();
                 signup();
             }
         });
-        InitializeEventListeners(rootView.findViewById(android.R.id.content));
+        InitializeEventListeners(view);
+//
+        return view;
 
-        return rootView;
     }
 
     @Override
@@ -82,12 +80,10 @@ public class LoginFragment extends Fragment {
     }
 
     private void InitializeEventListeners(View view) {
-        mBtnSignupFaceBook = (Button) rootView.findViewById(R.id.btnfacebook_login);
-
+        mBtnSignupFaceBook = (Button) view.findViewById(R.id.btnfacebook_login);
         //listen to register button click
         FacebookDetails facebookDetails = new FacebookDetails();
-        mBtnSignupFaceBook.setOnClickListener(facebookDetails.OnFacebookSignup(view, getActivity()));
-
+        mBtnSignupFaceBook.setOnClickListener(facebookDetails.OnFacebookSignup(view.findViewById(android.R.id.content), getActivity()));
     }
 
     private void signup() {

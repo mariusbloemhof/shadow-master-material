@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.parse.Parse;
@@ -45,6 +46,15 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), mToolbar);
         drawerFragment.setDrawerListener(this);
+
+
+        Button btnsignupBack = (Button)findViewById(R.id.btn_back_signup);
+        btnsignupBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
 
         // display the first navigation drawer view on app launch
         displayView(0);
@@ -96,8 +106,8 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 title = getString(R.string.title_signup);
                 break;
             case 2:
-                fragment = new MessagesFragment();
-                title = getString(R.string.title_messages);
+                fragment = new LocationFragment();
+                title = getString(R.string.title_location);
                 break;
             default:
                 break;
@@ -111,7 +121,25 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             fragmentTransaction.commit();
 
             // set the toolbar title
-            getSupportActionBar().setTitle(title);
+//            getSupportActionBar().setTitle(title);
         }
+    }
+
+    public void onSignupPressed() {
+        displayView(1);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+            //additional code
+        } else {
+            getFragmentManager().popBackStackImmediate();
+        }
+
     }
 }
