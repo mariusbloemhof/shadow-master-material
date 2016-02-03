@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -52,6 +53,9 @@ public class SignupFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        LinearLayout navLayout = (LinearLayout) getActivity().findViewById(R.id.navigation_bar);
+        navLayout.setVisibility(View.VISIBLE);
         View view = inflater.inflate(R.layout.activity_signup, container, false);
         return view;
     }

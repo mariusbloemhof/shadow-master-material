@@ -3,6 +3,7 @@ package za.co.shadow.signup;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -37,7 +38,8 @@ public class FacebookDetails{
     private Callable saveUser;
     private ArrayList<String> valuelist;
     private Activity activity;
-    private View view;
+    private Fragment fragment;
+//    private View view;
 
     public FacebookDetails(ArrayList<String> values) {
         saveUser = new SaveUser();
@@ -52,13 +54,13 @@ public class FacebookDetails{
         valuelist.add("last_name");
         valuelist.add("first_name");
         valuelist.add("email");
-        //GetFaceBookData(accessToken);
+//        GetFaceBookData(accessToken);
     }
 
     public View.OnClickListener OnFacebookSignup (final View view, final Activity activity) {
 
         this.activity = activity;
-        this.view = view;
+//        this.view = view;
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +72,7 @@ public class FacebookDetails{
                 permissions.add("email");
                 permissions.add("user_birthday");
 
-                Toast.makeText(view.getContext(), "User trying to sign up through Facebook!", Toast.LENGTH_LONG).show();
+                Toast.makeText(v.getContext(), "User trying to sign up through Facebook!", Toast.LENGTH_LONG).show();
 
                 ParseFacebookUtils.logInWithReadPermissionsInBackground(activity, permissions, new LogInCallback() {
                     @Override
@@ -95,6 +97,48 @@ public class FacebookDetails{
         };
     }
 
+    public View.OnClickListener OnFacebookSignup (final View view, final Fragment fragment) {
+
+        this.activity = fragment.getActivity();
+//        this.view = view;
+        this.fragment = fragment;
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final List<String> permissions = new ArrayList<String>();
+                permissions.add("public_profile");
+                permissions.add("user_status");
+                permissions.add("user_friends");
+                permissions.add("email");
+                permissions.add("user_birthday");
+
+                Toast.makeText(v.getContext(), "User trying to sign up through Facebook!", Toast.LENGTH_LONG).show();
+
+                ParseFacebookUtils.logInWithReadPermissionsInBackground(fragment, permissions, new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException err) {
+                        if (user == null) {
+                            Toast.makeText(view.getContext(), "Error: " + err, Toast.LENGTH_LONG).show();
+                            Log.d("MyApp", "Error: " + err);
+                        } else {
+                            if (user.isNew()) {
+                                GetFaceBookData(AccessToken.getCurrentAccessToken());
+                                Toast.makeText(view.getContext(), "User signed up with Facebook!", Toast.LENGTH_LONG).show();
+                            } else {
+                                GetFaceBookData(AccessToken.getCurrentAccessToken());
+                                Toast.makeText(view.getContext(), "User signed in with Facebook!", Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+                });
+
+
+            }
+        };
+    }
+
+
     private void GetFaceBookData(AccessToken accessToken) {
         GraphRequest request = GraphRequest.newMeRequest(
                 accessToken,
@@ -107,8 +151,8 @@ public class FacebookDetails{
                                 pairs.add(new Pair(value, object.getString(value)));
                             }
                             saveUser.call(pairs);
-                            Intent intentSignup = new Intent(view.getContext(), SignupActivity.class);
-                            activity.startActivityForResult(intentSignup, 0);
+//                            Intent intentSignup = new Intent(view.getContext(), SignupActivity.class);
+//                            activity.startActivityForResult(intentSignup, 0);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

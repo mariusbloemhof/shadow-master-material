@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     private Fragment loginfragment;
     private Fragment signupfragment;
     private Fragment locationfragment;
+    private int nextfragment;
+    private int previousfragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,13 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         btnsignupBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+
+        Button btnsignupNext = (Button)findViewById(R.id.btn_next_signup);
+        btnsignupNext.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onNextPressed();
             }
         });
 
@@ -97,15 +106,21 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         displayView(position);
     }
 
-    private void displayView(int position) {
+    public void displayView(int position) {
+        this.getSupportActionBar().show();
         Fragment fragment = null;
         String title = getString(R.string.app_name);
         switch (position) {
             case 0:
+                this.getSupportActionBar().hide();
                 if (loginfragment == null) {
                     loginfragment = new LoginFragment();
                 }
                 fragment = loginfragment;
+
+                nextfragment = 1;
+                previousfragment = -1;
+
                 title = getString(R.string.title_login);
                 break;
             case 1:
@@ -113,6 +128,8 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                     signupfragment = new SignupFragment();
                 }
                 fragment = signupfragment;
+                nextfragment = 2;
+                previousfragment = 0;
                 title = getString(R.string.title_signup);
                 break;
             case 2:
@@ -120,6 +137,9 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                     locationfragment = new LocationFragment();
                 }
                 fragment = locationfragment;
+                nextfragment = -1;
+                previousfragment = 1;
+
                 title = getString(R.string.title_location);
                 break;
             case 3:
@@ -135,10 +155,10 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_body, fragment);
 //            fragmentTransaction.add(R.id.container_body, fragment);
-//            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
             // set the toolbar title
-//            getSupportActionBar().setTitle(title);
+            getSupportActionBar().setTitle(title);
         }
     }
 
@@ -146,17 +166,19 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         displayView(1);
     }
 
+    public void onNextPressed() {
+        if (nextfragment != -1) {
+            displayView(nextfragment);
+        }
+    }
+
+
     @Override
     public void onBackPressed() {
 
-        int count = getSupportFragmentManager().getBackStackEntryCount();
-
-        if (count == 0) {
-            super.onBackPressed();
-            //additional code
-        } else {
-            getFragmentManager().popBackStackImmediate();
+        if (previousfragment != -1) {
+            displayView(previousfragment);
         }
-
     }
+
 }

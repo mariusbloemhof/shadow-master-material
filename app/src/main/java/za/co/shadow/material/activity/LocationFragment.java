@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -83,6 +84,9 @@ public class LocationFragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+        LinearLayout navLayout = (LinearLayout) getActivity().findViewById(R.id.navigation_bar);
+        navLayout.setVisibility(View.VISIBLE);
+
         View view = inflater.inflate(R.layout.activity_address, container, false);
         SetupMap();
         return view;

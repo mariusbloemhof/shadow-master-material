@@ -13,7 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.parse.Parse;
@@ -39,13 +41,16 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
+
+        LinearLayout navLayout = (LinearLayout) getActivity().findViewById(R.id.navigation_bar);
+        navLayout.setVisibility(View.INVISIBLE);
+
         View view = inflater.inflate(R.layout.activity_login_selection, container, false);
 
         parseUser = ParseUser.getCurrentUser();
@@ -58,7 +63,26 @@ public class LoginFragment extends Fragment {
                 signup();
             }
         });
-        InitializeEventListeners(view);
+
+
+        mBtnSignupFaceBook = (Button) view.findViewById(R.id.btnfacebook_login);
+        //listen to register button click
+        FacebookDetails facebookDetails = new FacebookDetails();
+//
+        View.OnClickListener clicklistener = facebookDetails.OnFacebookSignup(getActivity().findViewById(android.R.id.content), this);
+
+
+        mBtnSignupFaceBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        mBtnSignupFaceBook.setOnClickListener(clicklistener);
+
+//        InitializeEventListeners(getActivity().findViewById(android.R.id.content));
+//        InitializeEventListeners(view);
 //
         return view;
 
@@ -80,27 +104,40 @@ public class LoginFragment extends Fragment {
     }
 
     private void InitializeEventListeners(View view) {
-        mBtnSignupFaceBook = (Button) view.findViewById(R.id.btnfacebook_login);
-        //listen to register button click
-        FacebookDetails facebookDetails = new FacebookDetails();
-        mBtnSignupFaceBook.setOnClickListener(facebookDetails.OnFacebookSignup(view.findViewById(android.R.id.content), getActivity()));
+//        mBtnSignupFaceBook = (Button) view.findViewById(R.id.btnfacebook_login);
+//        //listen to register button click
+////        FacebookDetails facebookDetails = new FacebookDetails();
+////
+////        View.OnClickListener clicklistener = facebookDetails.OnFacebookSignup(view, this);
+//
+//
+//        mBtnSignupFaceBook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
     private void signup() {
-        String title  = getString(R.string.title_signup);
-        Fragment fragment = new SignupFragment();
 
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.container_body, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        MainActivity parentactivity = (MainActivity) getActivity();
+        parentactivity.displayView(1);
 
-        // set the toolbar title
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle(title);
-        }
+//        String title  = getString(R.string.title_signup);
+//        Fragment fragment = new SignupFragment();
+//
+//        FragmentManager fragmentManager = getFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.container_body, fragment);
+//        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.commit();
+//
+//        // set the toolbar title
+//        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.setTitle(title);
+//        }
     }
 
 }
