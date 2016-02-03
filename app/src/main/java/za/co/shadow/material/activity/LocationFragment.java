@@ -75,8 +75,8 @@ public class LocationFragment extends Fragment implements
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setRetainInstance(true);
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -100,7 +100,6 @@ public class LocationFragment extends Fragment implements
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 
@@ -132,7 +131,8 @@ public class LocationFragment extends Fragment implements
 
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
+//        if (mMap == null)
+        {
             // Try to obtain the map from the SupportMapFragment.
             MapFragment  mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.googleMap);
             mapFragment.getMapAsync(this);
@@ -152,9 +152,9 @@ public class LocationFragment extends Fragment implements
         mMap = map;
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-        @Override
-        public void onMapClick(LatLng latLng) {
-            AddMarkertoMap(mMap.getCameraPosition().target, "This is your current screen coordinates");
+            @Override
+            public void onMapClick(LatLng latLng) {
+                AddMarkertoMap(mMap.getCameraPosition().target, "This is your current screen coordinates");
             }
         });
 
@@ -178,12 +178,6 @@ public class LocationFragment extends Fragment implements
             }
         });
 
-        Button btnsignupBack = (Button)getView().findViewById(R.id.btn_back_addLocation);
-        btnsignupBack.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                // finish();
-            }
-        });
     };
 
     protected void SetupMap() {
@@ -196,9 +190,15 @@ public class LocationFragment extends Fragment implements
                     .addApi(LocationServices.API)
                     .build();
         }
-
-
+        else
+        {
+            if (!mGoogleApiClient.isConnected()) {
+                mGoogleApiClient.connect();
+            }
+            mLocationProvider.connect();
+        }
         setUpMapIfNeeded();
+        getMyLocation();
     }
 
 
@@ -414,5 +414,17 @@ public class LocationFragment extends Fragment implements
         if (mGoogleApiClient.isConnected()) {
             mGoogleApiClient.disconnect();
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
+        mLocationProvider.disconnect();
+        MapFragment mapFragment = (MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.googleMap);
+        if (mapFragment != null)
+            getActivity().getFragmentManager().beginTransaction().remove(mapFragment).commit();
     }
 }

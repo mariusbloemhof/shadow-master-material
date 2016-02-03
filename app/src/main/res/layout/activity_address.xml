@@ -8,40 +8,6 @@
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     tools:context="za.co.shadow.LocationFragment">
 
-    <LinearLayout
-        android:id="@+id/custom_action_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="1dp"
-        android:background="@drawable/background_actionbar"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_back_addLocation"
-            style="@style/Shadow.Button.ThirdPartyLogin"
-            android:layout_width="87dp"
-            android:layout_height="34dp"
-            android:layout_alignTop="@+id/linearLayout"
-            android:layout_margin="4dp"
-            android:background="@drawable/selector_actionbar_button"
-            android:drawableLeft="@drawable/ic_back_orange_64"
-            android:text="Back"
-            android:textColor="@color/color_actionbar_text"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="fill_parent"
-            android:layout_height="29dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingRight="20dp"
-            android:text="Signup / Add Address"
-            android:textAlignment="textEnd"
-            android:textColor="@color/color_actionbar_text"
-            android:textSize="16sp" />
-    </LinearLayout>
-
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -50,8 +16,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_margin="5dp"
-        android:layout_below="@+id/custom_action_bar"
-        android:layout_above="@+id/custom_wizard_bar"
         tools:context="za.co.shadow.maps.MapsActivity"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -63,7 +27,6 @@
         android:id="@+id/searchAddress"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
-        android:layout_below="@+id/custom_action_bar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -97,33 +60,5 @@
             android:visibility="visible"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/custom_wizard_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="-1dp"
-        android:layout_alignParentBottom="true"
-        android:paddingBottom="-1dp"
-        android:layout_margin="-1dp"
-        android:background="@drawable/background_actionbar"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_next_addlocation"
-            style="@style/Shadow.Button.ThirdPartyLogin"
-            android:layout_width="87dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:gravity="right|center_vertical"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="4dp"
-            android:background="@drawable/selector_actionbar_button"
-            android:drawableLeft="@drawable/ic_back_orange_64_right"
-            android:text="Next"
-            android:textColor="@color/color_actionbar_text"
-            android:textSize="18sp" />
-    </RelativeLayout>
 
 </RelativeLayout>

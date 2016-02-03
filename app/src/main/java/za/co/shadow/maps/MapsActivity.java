@@ -80,7 +80,7 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
 
         mLocationProvider = new LocationProvider(this, this);
 
-        autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+//        autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
 
         autoCompView.setAdapter(new GooglePlacesAutocompleteAdapter(this, R.layout.list_item));
         autoCompView.setOnItemClickListener(new OnItemClickListener() {
@@ -90,19 +90,19 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
             }
         });
 
-        Button btnFindMyLocation = (Button) findViewById(R.id.btnLocationPin);
-        btnFindMyLocation.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                getMyLocation();
-            }
-        });
+//        Button btnFindMyLocation = (Button) findViewById(R.id.btnLocationPin);
+//        btnFindMyLocation.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                getMyLocation();
+//            }
+//        });
 
-        Button btnsignupBack = (Button)findViewById(R.id.btn_back_addLocation);
-        btnsignupBack.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                finish();
-            }
-        });
+//        Button btnsignupBack = (Button)findViewById(R.id.btn_back_addLocation);
+//        btnsignupBack.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
    }
 
     @Override
@@ -217,7 +217,7 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
                             addresses.get(0).getAddressLine(1) + ", " +
                             addresses.get(0).getCountryName();
                     autoCompView.setOnItemClickListener(null);
-                    edtAddress = (EditText)findViewById(R.id.autoCompleteTextView);
+//                    edtAddress = (EditText)findViewById(R.id.autoCompleteTextView);
                     edtAddress.setText(address);
                     autoCompView.setOnItemClickListener(new OnItemClickListener() {
                         @Override
@@ -238,7 +238,7 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
         String address = input;
         /* get latitude and longitude from the adderress */
         if (address == "") {
-            edtAddress = (EditText)findViewById(R.id.autoCompleteTextView);
+//            edtAddress = (EditText)findViewById(R.id.autoCompleteTextView);
             address = edtAddress.getText().toString();
         }
         if (address != "") {

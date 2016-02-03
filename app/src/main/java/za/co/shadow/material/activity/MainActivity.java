@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.MapFragment;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseFacebookUtils;
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
 
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
+    private Fragment loginfragment;
+    private Fragment signupfragment;
+    private Fragment locationfragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,16 +102,29 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         String title = getString(R.string.app_name);
         switch (position) {
             case 0:
-                fragment = new LoginFragment();
+                if (loginfragment == null) {
+                    loginfragment = new LoginFragment();
+                }
+                fragment = loginfragment;
                 title = getString(R.string.title_login);
                 break;
             case 1:
-                fragment = new SignupFragment();
+                if (signupfragment == null) {
+                    signupfragment = new SignupFragment();
+                }
+                fragment = signupfragment;
                 title = getString(R.string.title_signup);
                 break;
             case 2:
-                fragment = new LocationFragment();
+                if (locationfragment == null) {
+                    locationfragment = new LocationFragment();
+                }
+                fragment = locationfragment;
                 title = getString(R.string.title_location);
+                break;
+            case 3:
+                fragment = new MessagesFragment();
+                title = getString(R.string.title_messages);
                 break;
             default:
                 break;
@@ -117,9 +134,9 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.container_body, fragment);
-            fragmentTransaction.addToBackStack(null);
+//            fragmentTransaction.add(R.id.container_body, fragment);
+//            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
-
             // set the toolbar title
 //            getSupportActionBar().setTitle(title);
         }

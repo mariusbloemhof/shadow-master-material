@@ -18,6 +18,7 @@
         <item>@string/nav_item_login</item>
         <item>@string/nav_item_registration</item>
         <item>@string/nav_item_location</item>
+        <item>@string/nav_item_notifications</item>
     </string-array>
 
     <string name="title_messages">Messages</string>
