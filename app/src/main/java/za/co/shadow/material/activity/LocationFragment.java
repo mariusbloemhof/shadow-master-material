@@ -31,6 +31,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.ParseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -418,6 +419,11 @@ public class LocationFragment extends Fragment implements
         if (mGoogleApiClient.isConnected()) {
             mGoogleApiClient.disconnect();
         }
+        ParseUser parseUser = ParseUser.getCurrentUser();
+        if (parseUser != null) {
+            parseUser.put("home_location",mMap.getCameraPosition().target.toString());
+            parseUser.saveInBackground();
+        }
     }
 
     @Override
@@ -431,4 +437,5 @@ public class LocationFragment extends Fragment implements
         if (mapFragment != null)
             getActivity().getFragmentManager().beginTransaction().remove(mapFragment).commit();
     }
+
 }

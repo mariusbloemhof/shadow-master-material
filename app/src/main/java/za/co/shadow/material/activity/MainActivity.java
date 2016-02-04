@@ -1,5 +1,6 @@
 package za.co.shadow.material.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -143,8 +144,8 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 title = getString(R.string.title_location);
                 break;
             case 3:
-                fragment = new MessagesFragment();
-                title = getString(R.string.title_messages);
+                fragment = new LinkDeviceFragment();
+                title = getString(R.string.title_linkdevice);
                 break;
             default:
                 break;
@@ -179,6 +180,12 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         if (previousfragment != -1) {
             displayView(previousfragment);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
     }
 
 }

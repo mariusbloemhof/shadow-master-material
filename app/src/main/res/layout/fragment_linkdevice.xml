@@ -1,0 +1,58 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    android:layout_margin="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitCenter"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/ic_bluetooth_128" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/thumbnail"
+            android:maxLines="3"
+            android:paddingLeft="5dp"
+            android:text="@string/pair_shadow"
+            android:textColor="#222"
+            android:textStyle="bold"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:maxLines="3"
+            android:paddingLeft="5dp"
+            android:text="@string/pair_shadow_descr"
+            android:textColor="#666"
+            android:textSize="12dp" />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_add_shadow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:src="@drawable/ic_plus"
+        app:layout_anchorGravity="bottom|right|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:background="@color/colorPrimary"
+        android:clickable="true"/>
+    app:elevation="4dp"/>
+
+</android.support.v7.widget.CardView>

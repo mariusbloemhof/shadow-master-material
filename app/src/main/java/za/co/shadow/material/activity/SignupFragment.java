@@ -83,18 +83,6 @@ public class SignupFragment extends Fragment {
 
         edtSecurityPhoneNo = (EditText)view.findViewById(R.id.edtSecurity_provider_contact_no);
         edtSecurityPhoneNo.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
-
-
-
-//        Button btnsignupNext = (Button)view.findViewById(R.id.btn_next_signup);
-//        btnsignupNext.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                Intent intentMap = new Intent(view.getContext(), MapsActivity.class);
-//                startActivityForResult(intentMap, 0);
-//            }
-//        });
-
-        // Inflate the layout for this fragment
     }
 
 
@@ -181,4 +169,12 @@ public class SignupFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        ParseUser parseUser = ParseUser.getCurrentUser();
+        if (parseUser != null) {
+            parseUser.saveInBackground();
+        }
+    }
 }

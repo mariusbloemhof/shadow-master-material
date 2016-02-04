@@ -53,37 +53,21 @@ public class LoginFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.activity_login_selection, container, false);
 
-        parseUser = ParseUser.getCurrentUser();
+//        parseUser = ParseUser.getCurrentUser();
 
         Button btnsignup = (Button) view.findViewById(R.id.btn_login);
         btnsignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-//                MainActivity activity = (MainActivity) getActivity();
-//                activity.onSignupPressed();
                 signup();
             }
         });
 
 
         mBtnSignupFaceBook = (Button) view.findViewById(R.id.btnfacebook_login);
-        //listen to register button click
+//        listen to register button click
         FacebookDetails facebookDetails = new FacebookDetails();
-//
         View.OnClickListener clicklistener = facebookDetails.OnFacebookSignup(getActivity().findViewById(android.R.id.content), this);
-
-
-        mBtnSignupFaceBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         mBtnSignupFaceBook.setOnClickListener(clicklistener);
-
-//        InitializeEventListeners(getActivity().findViewById(android.R.id.content));
-//        InitializeEventListeners(view);
-//
         return view;
 
     }
@@ -103,41 +87,16 @@ public class LoginFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private void InitializeEventListeners(View view) {
-//        mBtnSignupFaceBook = (Button) view.findViewById(R.id.btnfacebook_login);
-//        //listen to register button click
-////        FacebookDetails facebookDetails = new FacebookDetails();
-////
-////        View.OnClickListener clicklistener = facebookDetails.OnFacebookSignup(view, this);
-//
-//
-//        mBtnSignupFaceBook.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-    }
-
     private void signup() {
 
         MainActivity parentactivity = (MainActivity) getActivity();
         parentactivity.displayView(1);
 
-//        String title  = getString(R.string.title_signup);
-//        Fragment fragment = new SignupFragment();
-//
-//        FragmentManager fragmentManager = getFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.container_body, fragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-//
-//        // set the toolbar title
-//        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.setTitle(title);
-//        }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
+    }
 }

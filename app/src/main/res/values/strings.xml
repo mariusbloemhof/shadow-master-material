@@ -18,7 +18,7 @@
         <item>@string/nav_item_login</item>
         <item>@string/nav_item_registration</item>
         <item>@string/nav_item_location</item>
-        <item>@string/nav_item_notifications</item>
+        <item>@string/title_linkdevice</item>
     </string-array>
 
     <string name="title_messages">Messages</string>
@@ -27,6 +27,7 @@
     <string name="title_signup">Registration</string>
     <string name="title_login">Login</string>
     <string name="title_location">Location</string>
+    <string name="title_linkdevice">Link Shadow device</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -76,5 +77,8 @@
     <string name="prev">Previous</string>
     <string name="finish">Submit</string>
     <string name="review">Review</string>
+
+    <string name="pair_shadow">Pair your Shadow device</string>
+    <string name="pair_shadow_descr">You need to pair your Shadow device in order to complete the setup process. </string>
 
 </resources>

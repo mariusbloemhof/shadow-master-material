@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import za.co.shadow.Callable;
+import za.co.shadow.material.activity.MainActivity;
 
 /**
  * Created by Beast on 11/3/2015.
@@ -44,7 +45,7 @@ public class FacebookDetails{
     public FacebookDetails(ArrayList<String> values) {
         saveUser = new SaveUser();
         valuelist = values;
-        //GetFaceBookData(accessToken);
+        GetFaceBookData(AccessToken.getCurrentAccessToken());
     }
 
     public FacebookDetails() {
@@ -60,7 +61,6 @@ public class FacebookDetails{
     public View.OnClickListener OnFacebookSignup (final View view, final Activity activity) {
 
         this.activity = activity;
-//        this.view = view;
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +88,8 @@ public class FacebookDetails{
                                 GetFaceBookData(AccessToken.getCurrentAccessToken());
                                 Toast.makeText(view.getContext(), "User signed in with Facebook!", Toast.LENGTH_LONG).show();
                             }
+//                            MainActivity parentactivity = (MainActivity) this.activity;
+//                            parentactivity.displayView(1);
                         }
                     }
                 });
@@ -97,11 +99,11 @@ public class FacebookDetails{
         };
     }
 
-    public View.OnClickListener OnFacebookSignup (final View view, final Fragment fragment) {
+    public View.OnClickListener OnFacebookSignup (final View view, final Fragment afragment) {
 
-        this.activity = fragment.getActivity();
+        this.activity = afragment.getActivity();
 //        this.view = view;
-        this.fragment = fragment;
+        this.fragment = afragment;
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +131,8 @@ public class FacebookDetails{
                                 GetFaceBookData(AccessToken.getCurrentAccessToken());
                                 Toast.makeText(view.getContext(), "User signed in with Facebook!", Toast.LENGTH_LONG).show();
                             }
+                            MainActivity parentactivity = (MainActivity) fragment.getActivity();
+                            parentactivity.displayView(1);
                         }
                     }
                 });
