@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/register_layout"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="12dp"
+    android:paddingBottom="5dp"
     android:paddingTop="5dp">
 
     <EditText
         android:id="@+id/edtEmail_address_register"
         style="@style/Shadow.Text.Email"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="36dp"
         android:background="@drawable/selector_edit_corner_top"
         android:drawableLeft="@drawable/ic_email_black"
@@ -21,7 +21,7 @@
 
     <View
         android:id="@+id/view_line"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="1dip"
         android:layout_below="@+id/edtEmail_address_register"
         android:background="@color/color_login_help_button_label" />
@@ -29,7 +29,7 @@
     <EditText
         android:id="@+id/edtPassword_register"
         style="@style/Shadow.Text.Email"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_below="@+id/view_line"
         android:background="@drawable/selector_edit_corner_bottom"
@@ -44,7 +44,7 @@
     <Button
         android:id="@+id/btn_login"
         style="@style/Shadow.Button.ThirdPartyLogin"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:text="Sign in"

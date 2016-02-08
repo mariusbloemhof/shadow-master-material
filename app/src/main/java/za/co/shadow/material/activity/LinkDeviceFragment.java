@@ -37,12 +37,12 @@ public class LinkDeviceFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_linkdevice, container, false);
 
-        FloatingActionButton myFab = (FloatingActionButton)  view.findViewById(R.id.btn_add_shadow);
-        myFab.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-            }
-        });
+//        FloatingActionButton myFab = (FloatingActionButton)  view.findViewById(R.id.btn_add_shadow);
+//        myFab.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
         return view;
 

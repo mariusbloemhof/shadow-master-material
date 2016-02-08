@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/facebook_login_layout"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@+id/register_layout"
     android:layout_alignLeft="@+id/register_layout"
-    android:paddingBottom="1dp"
-    >
+    android:paddingBottom="4dp">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical|fill"
-        android:paddingBottom="3dp"
-        android:paddingTop="4dp">
+        android:gravity="center_vertical|fill">
         <Button
             android:id="@+id/btnfacebook_login"
             style="@style/Shadow.Button.ThirdPartyLogin"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/selector_button_facebook"
             android:drawableLeft="@drawable/ic_facebook_logo_72"

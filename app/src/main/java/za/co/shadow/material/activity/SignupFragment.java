@@ -3,6 +3,7 @@ package za.co.shadow.material.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.ArrayRes;
@@ -24,11 +25,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.parse.ParseUser;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import za.co.shadow.maps.MapsActivity;
 import za.co.shadow.material.R;
 
@@ -63,10 +67,35 @@ public class SignupFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         View view = getView();
-        InitializeSpinner(R.id.spnMedical_aid_provider, R.array.medical_aid_provider_arrays, "Medical Aid Provider");
-        InitializeSpinner(R.id.spnSecurity_provider, R.array.security_provider_arrays, "Security Company");
+
+
+        MaterialBetterSpinner spinner2 = (MaterialBetterSpinner) view.findViewById(R.id.spnMedical_aid_provider);
+
+        String[] list = getResources().getStringArray(R.array.medical_aid_provider_arrays);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, list);
+        spinner2.setTextColor(Color.WHITE);
+        spinner2.setHintTextColor(Color.WHITE);
+        spinner2.setFloatingLabelTextColor(Color.WHITE);
+        spinner2.setBaseColor(Color.WHITE);
+        spinner2.setHelperTextColor(Color.WHITE);
+        spinner2.setMetTextColor(Color.WHITE);
+        spinner2.setHelperTextColor(Color.WHITE);
+        spinner2.setPrimaryColor(Color.WHITE);
+        spinner2.setMetHintTextColor(Color.WHITE);
+        spinner2.setLinkTextColor(Color.WHITE);
+        spinner2.setHighlightColor(Color.WHITE);
+
+
+
+
+
+        spinner2.setAdapter(adapter);
+
+
+//        InitializeSpinner(R.id.spnMedical_aid_provider, R.array.medical_aid_provider_arrays, "Medical Aid Provider");
+//        InitializeSpinner(R.id.spnSecurity_provider, R.array.security_provider_arrays, "Security Company");
 
         ParseUser parseUser = ParseUser.getCurrentUser();
         if (parseUser != null) {

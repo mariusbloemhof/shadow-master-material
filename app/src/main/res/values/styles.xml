@@ -57,7 +57,8 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">42dp</item>
         <item name="android:textColor">@color/color_login_display_text</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">"Roboto medium"</item>
+        <item name="android:textSize">14dp</item>
     </style>
 
     <style name="Shadow.Spinner" parent="@android:style/Widget.Spinner">
@@ -91,14 +92,14 @@
     </style>
 
     <style name="Shadow.Text.signup" parent="@android:style/Widget.Button">>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">31dp</item>
         <item name="android:layout_gravity">left</item>
         <item name="android:textAlignment">textStart</item>
-        <item name="android:paddingLeft">18dp</item>
-        <item name="android:layout_marginLeft">18dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
-        <item name="android:layout_marginRight">18dp</item>
+        <item name="android:layout_marginRight">8dp</item>
         <item name="android:background">@color/colorTransparent</item>
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:fontFamily">sans-serif</item>
@@ -107,10 +108,19 @@
     </style>
 
     <style name="Shadow.Spinner.signup" parent="Shadow.Spinner">
-        <item name="android:layout_marginLeft">18dp</item>
+        <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
         <item name="android:paddingLeft">18dp</item>
-        <item name="android:layout_marginRight">18dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+
+    <style name="TextSpinnerAppearance">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColorHighlight">@color/colorWhite</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
+        <item name="android:textColorLink">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
 

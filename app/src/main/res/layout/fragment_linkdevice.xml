@@ -1,18 +1,29 @@
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_view"
-    android:layout_width="match_parent"
-    android:layout_height="210dp"
-    android:layout_margin="8dp">
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/signup_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:paddingBottom="0dp"
+    android:paddingTop="10dp"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+    android:background="@color/color_background">
 
-    <RelativeLayout
+   <RelativeLayout
+        android:id="@+id/shadow_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="135dp"
+        android:elevation="2dp"
+        android:padding="3dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="2dp"
+        android:outlineProvider="bounds"
+        android:background="@drawable/selector_card">
 
         <ImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="70dp"
             android:layout_alignParentTop="true"
             android:scaleType="fitCenter"
             android:paddingTop="15dp"
@@ -29,7 +40,7 @@
             android:text="@string/pair_shadow"
             android:textColor="#222"
             android:textStyle="bold"
-            android:textSize="18dp" />
+            android:textSize="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,16 +54,19 @@
 
     </RelativeLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btn_add_shadow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|right"
-        android:src="@drawable/ic_plus"
-        app:layout_anchorGravity="bottom|right|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:background="@color/colorPrimary"
-        android:clickable="true"/>
-    app:elevation="4dp"/>
+    <Button
+        android:id="@+id/btnScan_shadow"
+        style="@style/Shadow.Button.ThirdPartyLogin"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:elevation="2dp"
+        android:text="Scan for Shadow remote"
+        android:layout_below="@+id/shadow_list"
+        android:background="@drawable/selector_button_login"
+        android:drawableLeft="@drawable/ic_pencil_white"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" />
 
-</android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -49,7 +49,7 @@ public class LoginFragment extends Fragment {
     {
 
         LinearLayout navLayout = (LinearLayout) getActivity().findViewById(R.id.navigation_bar);
-        navLayout.setVisibility(View.INVISIBLE);
+        navLayout.setVisibility(View.GONE);
 
         View view = inflater.inflate(R.layout.activity_login_selection, container, false);
 
