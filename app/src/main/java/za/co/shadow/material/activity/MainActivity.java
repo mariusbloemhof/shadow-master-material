@@ -19,7 +19,6 @@ import com.google.android.gms.maps.MapFragment;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseFacebookUtils;
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import za.co.shadow.material.R;
 
@@ -139,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                     locationfragment = new LocationFragment();
                 }
                 fragment = locationfragment;
-                nextfragment = -1;
+                nextfragment = 3;
                 previousfragment = 1;
 
                 title = getString(R.string.title_location);
@@ -147,6 +146,8 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             case 3:
                 fragment = new LinkDeviceFragment();
                 title = getString(R.string.title_linkdevice);
+                nextfragment = -1;
+                previousfragment = 2;
                 break;
             default:
                 break;

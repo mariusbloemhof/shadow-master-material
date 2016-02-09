@@ -70,29 +70,23 @@ public class SignupFragment extends Fragment {
         View view = getView();
 
 
-        MaterialBetterSpinner spinner2 = (MaterialBetterSpinner) view.findViewById(R.id.spnMedical_aid_provider);
-
+        MaterialBetterSpinner spnMedicalAid = (MaterialBetterSpinner) view.findViewById(R.id.spnMedical_aid_provider);
         String[] list = getResources().getStringArray(R.array.medical_aid_provider_arrays);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.simple_list_small, list);
+        spnMedicalAid.setTextColor(getActivity().getResources().getColor(R.color.colorAlmostWhite));
+        spnMedicalAid.setHintTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
+        spnMedicalAid.setFloatingLabelTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
+        spnMedicalAid.setUnderlineColor(getActivity().getResources().getColor(R.color.colorAlmostWhite));
+        spnMedicalAid.setAdapter(adapter);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, list);
-        spinner2.setTextColor(Color.WHITE);
-        spinner2.setHintTextColor(Color.WHITE);
-        spinner2.setFloatingLabelTextColor(Color.WHITE);
-        spinner2.setBaseColor(Color.WHITE);
-        spinner2.setHelperTextColor(Color.WHITE);
-        spinner2.setMetTextColor(Color.WHITE);
-        spinner2.setHelperTextColor(Color.WHITE);
-        spinner2.setPrimaryColor(Color.WHITE);
-        spinner2.setMetHintTextColor(Color.WHITE);
-        spinner2.setLinkTextColor(Color.WHITE);
-        spinner2.setHighlightColor(Color.WHITE);
-
-
-
-
-
-        spinner2.setAdapter(adapter);
-
+        MaterialBetterSpinner spnSecurity = (MaterialBetterSpinner) view.findViewById(R.id.spnSecurity_provider);
+        list = getResources().getStringArray(R.array.security_provider_arrays);
+        ArrayAdapter<String> adapterSecurity = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list);
+        spnSecurity.setTextColor(getActivity().getResources().getColor(R.color.colorAlmostWhite));
+        spnSecurity.setHintTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
+        spnSecurity.setFloatingLabelTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
+        spnSecurity.setUnderlineColor(getActivity().getResources().getColor(R.color.colorAlmostWhite));
+        spnSecurity.setAdapter(adapterSecurity);
 
 //        InitializeSpinner(R.id.spnMedical_aid_provider, R.array.medical_aid_provider_arrays, "Medical Aid Provider");
 //        InitializeSpinner(R.id.spnSecurity_provider, R.array.security_provider_arrays, "Security Company");

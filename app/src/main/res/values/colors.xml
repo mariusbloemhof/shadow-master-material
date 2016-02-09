@@ -33,6 +33,12 @@
     <color name="color_login_activity_background_start">#464f60</color>
     <color name="color_login_activity_background_end">#374050</color>
     <color name="color_actionbar_text">#e1661f</color>
-    <color name="color_background">#212121</color>
+    <color name="color_background">#37474f</color>
     <color name="color_actionbar_background">#3d3d3d</color>
+    <color name="colorAlmostWhite">#feffffff</color>
+
+    <color name="color_red">#ff0000</color>
+    <color name="color_blue">#000dff</color>
+    <color name="color_yellow">#fbff00</color>
+    <color name="color_Navbar">#546e7a</color>
 </resources>

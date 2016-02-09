@@ -27,13 +27,14 @@
             android:id="@+id/container_body"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
+            android:background="@color/color_background"
             android:layout_weight="1" />
 
         <LinearLayout
             style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:id="@+id/navigation_bar"
-            android:background="@color/colorWhite"
+            android:background="@color/color_Navbar"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -45,7 +46,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/prev"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorWhite" />
 
             <Button
                 style="?android:attr/buttonBarButtonStyle"
@@ -55,7 +56,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/next"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorWhite" />
         </LinearLayout>
 
 

@@ -32,9 +32,6 @@ public class LinkDeviceFragment extends Fragment {
                              Bundle savedInstanceState)
     {
 
-        LinearLayout navLayout = (LinearLayout) getActivity().findViewById(R.id.navigation_bar);
-        navLayout.setVisibility(View.INVISIBLE);
-
         View view = inflater.inflate(R.layout.fragment_linkdevice, container, false);
 
 //        FloatingActionButton myFab = (FloatingActionButton)  view.findViewById(R.id.btn_add_shadow);

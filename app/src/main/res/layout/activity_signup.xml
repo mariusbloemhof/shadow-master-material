@@ -6,142 +6,273 @@
     android:layout_height="match_parent"
     android:background="@color/color_background"
     android:paddingBottom="0dp"
-    android:paddingTop="20dp"
+    android:paddingTop="10dp"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_Signup_first_name"
-        android:layout_width="match_parent"
-        android:textColorHint="@color/colorWhite"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/edtSignup_first_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
-            android:ems="10"
-            android:drawableLeft="@drawable/ic_person_white_24dp"
-            android:drawablePadding="20dp"
-            android:hint="@string/first_name"
-            android:inputType="textPersonName"/>
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-    android:id="@+id/input_layout_Signup_last_name"
-    android:layout_width="match_parent"
-    android:textColorHint="@color/colorWhite"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_below="@+id/input_layout_Signup_first_name"
-    android:layout_height="50dp">
-    <EditText
-        android:id="@+id/edtSignup_last_name"
+    <LinearLayout
+        android:id="@+id/view_Signup_first_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        android:ems="10"
-        android:drawableLeft="@drawable/ic_person_white_24dp"
-        android:drawablePadding="20dp"
-
-        android:hint="@string/last_name"
-        android:inputType="textPersonName"/>
- </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_Signup_mobile_no"
-        android:layout_width="match_parent"
-        android:textColorHint="@color/colorWhite"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_below="@+id/input_layout_Signup_last_name"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/edtSignup_mobile_no"
+        android:layout_marginRight="8dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/ic_person_white_24dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_Signup_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
-            android:ems="10"
-            android:hint="@string/mobile_number"
-            android:inputType="phone"/>
-    </android.support.design.widget.TextInputLayout>
+            android:theme="@style/TextLabel">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_Date_of_birth"
+            <EditText
+                android:id="@+id/edtSignup_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/first_name"
+                android:inputType="textPersonName"
+                android:singleLine="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_Signup_last_name"
         android:layout_width="match_parent"
-        android:textColorHint="@color/colorWhite"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_Signup_first_name"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_below="@+id/input_layout_Signup_mobile_no"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/edtDate_of_birth"
+        android:layout_marginRight="8dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/ic_person_white_24dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_Signup_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
-            android:ems="10"
-            android:hint="@string/date_of_birth"
-            android:inputType="date|datetime"
-            />
-    </android.support.design.widget.TextInputLayout>
+            android:theme="@style/TextLabel">
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_spnSecurity_provider"
-        android:layout_width="wrap_content"
-        android:textColorHint="@color/colorWhite"
+            <EditText
+                android:id="@+id/edtSignup_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/last_name"
+                android:inputType="textPersonName"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_Signup_mobile_no"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_below="@+id/view_Signup_last_name"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_below="@+id/spnMedical_aid_provider"
-        android:layout_height="wrap_content">
-        <Spinner
+        android:theme="@style/TextLabel">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/ic_call_white_24dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_Signup_mobile_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorPrimary"
+            android:theme="@style/TextLabel">
+
+            <EditText
+                android:id="@+id/edtSignup_mobile_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/mobile_number"
+                android:inputType="phone"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_Date_of_birth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_Signup_mobile_no"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:theme="@style/TextLabel">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/ic_date_range_white_24dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_Date_of_birth"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:textColorHint="@color/colorPrimary"
+            android:theme="@style/TextLabel">
+
+            <EditText
+                android:id="@+id/edtDate_of_birth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/date_of_birth"
+                android:inputType="date|datetime"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/view_Medical_aid_provider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_Date_of_birth"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:theme="@style/TextLabel">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/ic_local_hospital_white_24dp" />
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+            android:id="@+id/spnMedical_aid_provider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/medical_aid_provider_prompt"
+            android:textSize="16dp"
+            android:theme="@style/TextLabel"
+            android:paddingBottom="-5dp"
+            android:textColorHint="@color/colorPrimary"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            app:met_floatingLabel="normal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_Medical_aid_provider_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_Medical_aid_provider"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:theme="@style/TextLabel">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/ic_account_circle_white_24dp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorPrimary"
+            android:theme="@style/TextLabel">
+
+            <EditText
+                android:id="@+id/edtMedical_aid_provider_contact_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/medical_aid_no"
+                android:inputType="text"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_Security_provider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_Medical_aid_provider_no"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:theme="@style/TextLabel">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/ic_add_alert_white_24dp" />
+        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
             android:id="@+id/spnSecurity_provider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/medical_aid_provider_arrays"
-            android:textAlignment="viewStart"
-            android:hint="Security provider"
-            android:touchscreenBlocksFocus="true" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/input_layout_Security_provider_contact_no"
-        android:layout_width="match_parent"
-        android:textColorHint="@color/colorWhite"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_below="@+id/input_layout_spnSecurity_provider"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/edtSecurity_provider_contact_no"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite"
-            android:ems="10"
-            android:hint="@string/security_provider_contact"
-            android:inputType="phone"/>
-    </android.support.design.widget.TextInputLayout>
+            android:hint="Security Company"
+            android:textSize="16dp"
+            android:theme="@style/TextLabel"
+            android:paddingBottom="-5dp"
+            android:textColorHint="@color/colorPrimary"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            app:met_floatingLabel="normal" />
+    </LinearLayout>
 
 
-
-    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-        android:id="@+id/spnMedical_aid_provider"
+    <LinearLayout
+        android:id="@+id/Security_provider_contact_no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/medical_aid_provider_prompt"
+        android:layout_below="@+id/view_Security_provider"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:textColor="@color/colorWhite"
-        android:textColorHint="@color/colorWhite"
-        android:layout_below="@+id/input_layout_Date_of_birth"
-        app:met_floatingLabel="normal"/>
+        android:theme="@style/TextLabel">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/ic_call_white_24dp" />
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorPrimary"
+            android:theme="@style/TextLabel">
 
+            <EditText
+                android:id="@+id/edtSecurity_provider_contact_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/security_provider_contact"
+                android:inputType="phone"
+                android:textColor="@color/colorWhite"
+                android:textSize="16dp" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
 
 </RelativeLayout>
