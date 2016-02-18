@@ -60,7 +60,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        InitializeSpinner(R.id.spnMedical_aid_provider, R.array.medical_aid_provider_arrays, "Medical Aid Provider");
+//        InitializeSpinner(R.id.spnMedical_aid_provider, R.array.medical_aid_provider_arrays, "Medical Aid Provider");
 //        InitializeSpinner(R.id.spnSecurity_provider, R.array.security_provider_arrays, "Security Company");
 
         ParseUser parseUser = ParseUser.getCurrentUser();

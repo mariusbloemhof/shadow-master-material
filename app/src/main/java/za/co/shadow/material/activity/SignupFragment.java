@@ -17,6 +17,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,18 +26,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.parse.ParseUser;
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import fr.ganfra.materialspinner.MaterialSpinner;
 import za.co.shadow.maps.MapsActivity;
 import za.co.shadow.material.R;
 
 public class SignupFragment extends Fragment {
+
+    private static final String[] ITEMS = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"};
+    private ArrayAdapter<String> adapter;
 
     protected EditText edtFirstName; //edtSignup_first_name
     protected EditText edtLastName; //edtSignup_first_name
@@ -69,27 +71,20 @@ public class SignupFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         View view = getView();
 
+//        MaterialSpinner spnMedicalprovider = (MaterialSpinner) view.findViewById(R.id.spnMedical_aid_provider);
+//        adapter = new ArrayAdapter<>(getActivity(), R.layout.styles_spinner_layout_material, ITEMS);
+//        adapter.setDropDownViewResource(R.layout.styles_spinner_dropdown);
+//        spnMedicalprovider.setPaddingSafe(0, -10, 0, -10);
+//        spnMedicalprovider.setAdapter(adapter);
+//
+//        MaterialSpinner spnSecurity = (MaterialSpinner) view.findViewById(R.id.spnSecurity_provider);
+//        adapter = new ArrayAdapter<>(getActivity(), R.layout.styles_spinner_layout_material, ITEMS);
+//        adapter.setDropDownViewResource(R.layout.styles_spinner_dropdown);
+//        spnSecurity.setPaddingSafe(0, -10, 0, -10);
+//        spnSecurity.setAdapter(adapter);
 
-        MaterialBetterSpinner spnMedicalAid = (MaterialBetterSpinner) view.findViewById(R.id.spnMedical_aid_provider);
-        String[] list = getResources().getStringArray(R.array.medical_aid_provider_arrays);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.simple_list_small, list);
-        spnMedicalAid.setTextColor(getActivity().getResources().getColor(R.color.colorAlmostWhite));
-        spnMedicalAid.setHintTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
-        spnMedicalAid.setFloatingLabelTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
-        spnMedicalAid.setUnderlineColor(getActivity().getResources().getColor(R.color.colorAlmostWhite));
-        spnMedicalAid.setAdapter(adapter);
-
-        MaterialBetterSpinner spnSecurity = (MaterialBetterSpinner) view.findViewById(R.id.spnSecurity_provider);
-        list = getResources().getStringArray(R.array.security_provider_arrays);
-        ArrayAdapter<String> adapterSecurity = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, list);
-        spnSecurity.setTextColor(getActivity().getResources().getColor(R.color.colorAlmostWhite));
-        spnSecurity.setHintTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
-        spnSecurity.setFloatingLabelTextColor(getActivity().getResources().getColor(R.color.colorPrimary));
-        spnSecurity.setUnderlineColor(getActivity().getResources().getColor(R.color.colorAlmostWhite));
-        spnSecurity.setAdapter(adapterSecurity);
-
-//        InitializeSpinner(R.id.spnMedical_aid_provider, R.array.medical_aid_provider_arrays, "Medical Aid Provider");
-//        InitializeSpinner(R.id.spnSecurity_provider, R.array.security_provider_arrays, "Security Company");
+        InitializeSpinner(R.id.spnMedical_aid_provider, R.array.medical_aid_provider_arrays, "Medical Aid Provider");
+        InitializeSpinner(R.id.spnSecurity_provider, R.array.security_provider_arrays, "Security Company");
 
         ParseUser parseUser = ParseUser.getCurrentUser();
         if (parseUser != null) {
@@ -128,19 +123,28 @@ public class SignupFragment extends Fragment {
         list.add(defaultText);
         final int listsize = list.size() - 1;
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this.getActivity(), R.layout.styles_spinner_layout, list) {
-            @Override
-            public int getCount() {
-                return(listsize); // Truncate the list
-            }
-        };
 
-        Spinner spinner = (Spinner)view.findViewById(spinnerid);
+        MaterialSpinner spinner = (MaterialSpinner) view.findViewById(spinnerid);
+        adapter = new ArrayAdapter<>(getActivity(), R.layout.styles_spinner_layout_material, list);
+        adapter.setDropDownViewResource(R.layout.styles_spinner_dropdown);
+        spinner.setPaddingSafe(0, -10, 0, -10);
+        spinner.setAdapter(adapter);
 
-        dataAdapter.setDropDownViewResource(R.layout.styles_spinner_dropdown);
-        spinner.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-        spinner.setAdapter(dataAdapter);
-        spinner.setSelection(listsize); // Hidden item to appear in the spinner
+
+
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this.getActivity(), R.layout.styles_spinner_layout_material, list) {
+//            @Override
+//            public int getCount() {
+//                return(listsize); // Truncate the list
+//            }
+//        };
+//
+//        MaterialSpinner spinner = (MaterialSpinner)view.findViewById(spinnerid);
+//
+//        dataAdapter.setDropDownViewResource(R.layout.styles_spinner_dropdown);
+//        spinner.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+//        spinner.setAdapter(dataAdapter);
+//        spinner.setSelection(listsize); // Hidden item to appear in the spinner
     }
 
     private String getMyPhoneNumber(){
