@@ -19,7 +19,9 @@ import com.google.android.gms.maps.MapFragment;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseFacebookUtils;
+import com.parse.ParseObject;
 
+import za.co.shadow.Parse.ShadowDevice;
 import za.co.shadow.material.R;
 
 public class MainActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         setContentView(R.layout.activity_main);
 
         Parse.enableLocalDatastore(this);
+        ParseObject.registerSubclass(ShadowDevice.class);
         Parse.initialize(this, "0cJSz075MogqVzprRn36GXO6m1ur547EN8fVhOF4", "nafYF4kwB41R4AyTGZY7j0oGPKMVh5DXNzxurWjt");
         ParseFacebookUtils.initialize(this);
         ParseAnalytics.trackAppOpenedInBackground(getIntent());

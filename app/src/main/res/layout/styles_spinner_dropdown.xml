@@ -11,3 +11,5 @@
     android:textAlignment="gravity"
     android:textColor="@color/colorPrimary"
     android:textSize="16sp" />
+
+
