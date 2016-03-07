@@ -26,7 +26,7 @@ ext {
     compileSdkVersion = 22
     buildToolsVersion = "22.0.1"
 
-    minSdkVersion = 15
+    minSdkVersion = 18
     targetSdkVersion = 22
 
     parseFacebookUtilsPath = "$rootProject.projectDir/libs/ParseFacebookUtilsV4-1.10.1.jar"

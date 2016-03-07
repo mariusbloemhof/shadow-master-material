@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BLElib</string>
+
+    <string name="pair_shadow">Pair your Shadow device</string>
+    <string name="pair_shadow_descr">You need to pair your Shadow device in order to complete the setup process. </string>
+
+
+</resources>

@@ -8,51 +8,14 @@
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     android:background="@color/color_background">
 
-   <RelativeLayout
-        android:id="@+id/shadow_list"
-        android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:elevation="2dp"
-        android:padding="3dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="2dp"
-        android:outlineProvider="bounds"
-        android:background="@drawable/selector_card">
+    <ListView
+        android:id="@+id/bleDeviceListView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shadow_list"
 
-        <ImageView
-            android:id="@+id/thumbnail"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_alignParentTop="true"
-            android:scaleType="fitCenter"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:src="@drawable/ic_bluetooth_128" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/thumbnail"
-            android:maxLines="3"
-            android:paddingLeft="5dp"
-            android:text="@string/pair_shadow"
-            android:textColor="#222"
-            android:textStyle="bold"
-            android:textSize="16dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
-            android:maxLines="3"
-            android:paddingLeft="5dp"
-            android:text="@string/pair_shadow_descr"
-            android:textColor="#666"
-            android:textSize="12dp" />
-
-    </RelativeLayout>
+        >
+    </ListView>
 
     <Button
         android:id="@+id/btnScan_shadow"
@@ -62,7 +25,7 @@
         android:layout_marginTop="4dp"
         android:elevation="2dp"
         android:text="Scan for Shadow remote"
-        android:layout_below="@+id/shadow_list"
+        android:layout_below="@+id/bleDeviceListView"
         android:background="@drawable/selector_button_login"
         android:drawableLeft="@drawable/ic_loop_white_24dp"
         android:layout_marginLeft="8dp"

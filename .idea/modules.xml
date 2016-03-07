@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Shadow-master-material.iml" filepath="$PROJECT_DIR$/Shadow-master-material.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blelib/blelib.iml" filepath="$PROJECT_DIR$/blelib/blelib.iml" />
     </modules>
   </component>
 </project>
