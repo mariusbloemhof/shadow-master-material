@@ -57,36 +57,10 @@ public class LinkDeviceFragment extends Fragment {
 
         final View view = inflater.inflate(R.layout.fragment_linkdevice, container, false);
 
-//        Button btnScanDevice = (Button)  view.findViewById(R.id.btnScan_shadow);
-//        btnScanDevice.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//            //scan for device
-//            if (ScanforDevice()) {
-//                ShadowDevice shadowdevice;
-//                ParseUser user = ParseUser.getCurrentUser();
-//                ParseQuery<ShadowDevice> query = ParseQuery.getQuery("ShadowDevice");
-//                query.whereEqualTo("user", user);
-//                try {
-//                    List<ShadowDevice> results = query.find();
-//                    if (results.size() > 0) {
-//                        shadowdevice = results.get(0);
-//                    }
-//                    else {
-//                        shadowdevice = new ShadowDevice();
-//                    }
-//                }
-//                catch (ParseException e) {shadowdevice = new ShadowDevice();}
-//                shadowdevice.setBlueToothDeviceID(21154);
-//                shadowdevice.SaveLater();
-//            }
-//            }
-//        });
-
         scanButton = (Button) view.findViewById(R.id.btnScan_shadow);
 
         scanButton.setOnClickListener(new View.OnClickListener() {
-                                             public void onClick(View v) {
-                                                 scanOnClick(v);
+                                             public void onClick(View v) {scanOnClick(v);
                                              }
         });
 

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import za.co.shadow.blelib.R;
 
 public class BLEDeviceListAdapter extends BaseAdapter{
-	private TextView devNameTextView, devAddressTextView;
+	private TextView devNameTextView, devAddressTextView, devProximity;
 	private TextView devUUIDTextView, devMajorTextView, devMinorTextView;
 	private TextView devTxPowerTextView, devDistanceTextView;
 
@@ -82,6 +82,8 @@ public class BLEDeviceListAdapter extends BaseAdapter{
 			layout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.item_list_material, null);
 			devNameTextView = (TextView) layout.findViewById(R.id.textViewDevName);
 			devAddressTextView = (TextView) layout.findViewById(R.id.textViewDevAddress);
+			devProximity = (TextView) layout.findViewById(R.id.textViewDevProx);
+
 			devUUIDTextView = new TextView(context);
 			devUUIDTextView.setTextSize(12);
 			devMajorTextView = new TextView(context);
@@ -97,17 +99,26 @@ public class BLEDeviceListAdapter extends BaseAdapter{
 
 		// add-Parameters
 		BluetoothDevice device = bleArrayList.get(position).device;
-		int rssi = bleArrayList.get(position).rssi;
+		int rssi = bleArrayList.get(position).rssi * -1;
 		byte[] scanRecord = bleArrayList.get(position).scanRecord;
 		String devName = device.getName();
 		devName = "Shadow remote";
 		if (devName != null && devName.length() > 0) {
-			devNameTextView.setText(devName+"   rssi:"+String.valueOf(rssi));
+			String signalStrength;
+
+			signalStrength = "unknown";
+			if (rssi >= 80) {signalStrength = "poor";}
+			else if ((rssi < 80) && (rssi >= 60 )) {signalStrength = "average";}
+			else if ((rssi < 60) && (rssi >= 40 )) {signalStrength = "good";}
+			else if (rssi < 40) {signalStrength = "excellent";}
+
+			devProximity.setText("Signal strength: "+signalStrength + "("+ String.valueOf(-rssi)+")");
+			devNameTextView.setText(devName);
 		} else {
 			devNameTextView.setText("unknow-device"+"   rssi:"+String.valueOf(rssi));
 		}
 		devAddressTextView.setText(device.getAddress());
-		
+
 		if(scanRecord[7] == 0x02 && scanRecord[8] == 0x15){
 			String uuid = String.format("uuid:%02X%02X%02X%02X-%02X%02X-%02X%02X-%02X%02X-%02X%02X%02X%02X%02X%02X", 
 					scanRecord[9], scanRecord[10], scanRecord[11], scanRecord[12], 

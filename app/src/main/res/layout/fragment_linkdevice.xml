@@ -6,16 +6,35 @@
     android:paddingBottom="0dp"
     android:paddingTop="10dp"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-    android:background="@color/color_background">
+    android:background="@color/colorWhite">
+
+    <TextView
+        android:id="@+id/textViewDevice"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:maxLines="3"
+        android:layout_marginLeft="60dp"
+        android:text="Shadow device list"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14dp"
+         />
+    <View
+        android:id="@+id/lineA"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/textViewDevice"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60dp"
+        android:background="@color/colorPrimaryLight"
+        android:orientation="vertical" />
 
     <ListView
         android:id="@+id/bleDeviceListView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/shadow_list"
+        android:layout_below="@+id/lineA">
 
-        >
     </ListView>
+
 
     <Button
         android:id="@+id/btnScan_shadow"

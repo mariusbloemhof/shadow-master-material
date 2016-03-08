@@ -428,6 +428,7 @@ public class BluetoothHandler {
 		public void onLeScan(final BluetoothDevice device, final int rssi,
 							 final byte[] scanRecord) {
 
+//			if (true) {
 			if (device.getName().contains("SensorTag") || device.getAddress().contains("D0")) {
 				if (onScanListener != null) {
 					onScanListener.onScan(device, rssi, scanRecord);
