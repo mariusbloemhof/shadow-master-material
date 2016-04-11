@@ -6,7 +6,8 @@
     android:paddingBottom="0dp"
     android:paddingTop="10dp"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-    android:background="@color/colorWhite">
+    android:background="@color/color_background"
+    >
 
     <TextView
         android:id="@+id/textViewDevice"
@@ -32,7 +33,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lineA">
-
     </ListView>
 
 

@@ -16,6 +16,8 @@
 
 package za.co.shadow.blelib.ble;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -28,13 +30,19 @@ import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.*;
+import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 import java.util.List;
 import java.util.UUID;
+
+import za.co.shadow.blelib.Constants;
+import za.co.shadow.blelib.R;
 
 /**
  * Service for managing connection and data communication with a GATT server hosted on a
@@ -42,6 +50,7 @@ import java.util.UUID;
  */
 public class BluetoothLeService extends Service {
     private final static String TAG = BluetoothLeService.class.getSimpleName();
+    private static final String LOG_TAG = "ForegroundService";
 
     private BluetoothManager mBluetoothManager;
     private BluetoothAdapter mBluetoothAdapter;
@@ -237,8 +246,7 @@ public class BluetoothLeService extends Service {
                         EmergencyTriggered = true;
                         EmergencyCancelled = false;
                         sendBroadcast(intent);
-                    }
-                    else {
+                    } else {
                         EmergencyCancelPress++;
                         Log.w(TAG, String.format("Cancelled press %s", EmergencyCancelPress));
                     }
@@ -273,6 +281,10 @@ public class BluetoothLeService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
+
+        Notification notification = new Notification();
+        notification.tickerText = "test notification";
+        startForeground(9, notification);
         return mBinder;
     }
 
@@ -281,8 +293,9 @@ public class BluetoothLeService extends Service {
         // After using a given device, you should make sure that BluetoothGatt.close() is called
         // such that resources are cleaned up properly.  In this particular example, close() is
         // invoked when the UI is disconnected from the Service.
-        close();
-        return super.onUnbind(intent);
+//        close();
+//        return super.onUnbind(intent);
+        return true;
     }
 
     private final IBinder mBinder = new LocalBinder();
@@ -434,4 +447,72 @@ public class BluetoothLeService extends Service {
     public BluetoothGattService GetBluetoothGattService(UUID GatUUID) {
         return mBluetoothGatt.getService(GatUUID);
     }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent.getAction().equals(Constants.ACTION.STARTFOREGROUND_ACTION)) {
+            Log.i(LOG_TAG, "Received Start Foreground Intent ");
+            Intent notificationIntent = new Intent(this, BluetoothHandler.class);
+            notificationIntent.setAction(Constants.ACTION.MAIN_ACTION);
+            notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                    | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                    notificationIntent, 0);
+
+//            Intent previousIntent = new Intent(this, BluetoothLeService.class);
+//            previousIntent.setAction(Constants.ACTION.PREV_ACTION);
+//            PendingIntent ppreviousIntent = PendingIntent.getService(this, 0,
+//                    previousIntent, 0);
+//
+//            Intent playIntent = new Intent(this, BluetoothLeService.class);
+//            playIntent.setAction(Constants.ACTION.PLAY_ACTION);
+//            PendingIntent pplayIntent = PendingIntent.getService(this, 0,
+//                    playIntent, 0);
+//
+//            Intent nextIntent = new Intent(this, BluetoothLeService.class);
+//            nextIntent.setAction(Constants.ACTION.NEXT_ACTION);
+//            PendingIntent pnextIntent = PendingIntent.getService(this, 0,
+//                    nextIntent, 0);
+//
+//            Bitmap icon = BitmapFactory.decodeResource(getResources(),
+//                    R.drawable.truiton_short);
+
+//            Notification notification = new NotificationCompat.Builder(this)
+//                    .setContentTitle("Truiton Music Player")
+//                    .setTicker("Truiton Music Player")
+//                    .setContentText("My Music")
+//                    .setSmallIcon(R.drawable.ic_launcher)
+//                    .setLargeIcon(
+//                            Bitmap.createScaledBitmap(icon, 128, 128, false))
+//                    .setContentIntent(pendingIntent)
+//                    .setOngoing(true)
+//                    .addAction(android.R.drawable.ic_media_previous,
+//                            "Previous", ppreviousIntent)
+//                    .addAction(android.R.drawable.ic_media_play, "Play",
+//                            pplayIntent)
+//                    .addAction(android.R.drawable.ic_media_next, "Next",
+//                            pnextIntent).build();
+
+            Notification notification = new Notification();
+            notification.tickerText = "test notification";
+            startForeground(9, notification);
+
+
+            startForeground(Constants.NOTIFICATION_ID.FOREGROUND_SERVICE,
+                    notification);
+        } else if (intent.getAction().equals(Constants.ACTION.PREV_ACTION)) {
+            Log.i(LOG_TAG, "Clicked Previous");
+        } else if (intent.getAction().equals(Constants.ACTION.PLAY_ACTION)) {
+            Log.i(LOG_TAG, "Clicked Play");
+        } else if (intent.getAction().equals(Constants.ACTION.NEXT_ACTION)) {
+            Log.i(LOG_TAG, "Clicked Next");
+        } else if (intent.getAction().equals(
+                Constants.ACTION.STOPFOREGROUND_ACTION)) {
+            Log.i(LOG_TAG, "Received Stop Foreground Intent");
+            stopForeground(true);
+            stopSelf();
+        }
+        return START_STICKY;
+    }
+
 }

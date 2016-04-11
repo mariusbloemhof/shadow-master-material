@@ -1,7 +1,14 @@
 package za.co.shadow.material.activity;
 
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,21 +25,35 @@ import android.widget.Toast;
 import com.google.android.gms.maps.MapFragment;
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
+import com.parse.ParseException;
 import com.parse.ParseFacebookUtils;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.Calendar;
+import java.util.List;
 
 import za.co.shadow.Parse.ShadowDevice;
+import za.co.shadow.blelib.Constants;
+import za.co.shadow.blelib.ble.BluetoothHandler;
+import za.co.shadow.blelib.ble.BluetoothLeService;
 import za.co.shadow.material.R;
 
 public class MainActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
 
     private static String TAG = MainActivity.class.getSimpleName();
+    public static final int PICK_CONTACT = 5;
 
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
     private Fragment loginfragment;
     private Fragment signupfragment;
     private Fragment locationfragment;
+    private Fragment linkDevicefragment;
+    private Fragment emergencyfragment;
+
+
     private int nextfragment;
     private int previousfragment;
 
@@ -58,25 +79,55 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         drawerFragment.setDrawerListener(this);
 
 
-        Button btnsignupBack = (Button)findViewById(R.id.btn_back_signup);
+        Button btnsignupBack = (Button) findViewById(R.id.btn_back_signup);
         btnsignupBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onBackPressed();
             }
         });
 
-        Button btnsignupNext = (Button)findViewById(R.id.btn_next_signup);
+        Button btnsignupNext = (Button) findViewById(R.id.btn_next_signup);
         btnsignupNext.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onNextPressed();
             }
         });
 
+//        Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+//        startActivityForResult(intent, PICK_CONTACT);
+//        ConnectExistingDevice();
 
         // display the first navigation drawer view on app launch
         displayView(0);
     }
 
+    private void ConnectExistingDevice() {
+        ParseUser parseUser = ParseUser.getCurrentUser();
+        if (parseUser != null) {
+            BluetoothHandler bluetoothHandler = new BluetoothHandler(this);
+
+            ShadowDevice shadowdevice = null;
+            ParseQuery<ShadowDevice> query = ParseQuery.getQuery("ShadowDevice");
+            query.whereEqualTo("user", parseUser);
+            try {
+                List<ShadowDevice> results = query.find();
+                if (results.size() > 0) {
+                    shadowdevice = results.get(0);
+                } else {
+                    shadowdevice = new ShadowDevice();
+                }
+            } catch (ParseException e) {
+            }
+
+            if (shadowdevice != null) {
+//                Intent startIntent = new Intent(MainActivity.this, BluetoothLeService.class);
+//                startIntent.setAction(Constants.ACTION.STARTFOREGROUND_ACTION);
+//                startService(startIntent);
+
+                bluetoothHandler.connect(shadowdevice.getBlueToothDeviceID());
+            }
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -97,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             return true;
         }
 
-        if(id == R.id.action_search){
+        if (id == R.id.action_search) {
             Toast.makeText(getApplicationContext(), "Search action is selected!", Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -147,11 +198,25 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
                 title = getString(R.string.title_location);
                 break;
             case 3:
-                fragment = new LinkDeviceFragment();
+                if (linkDevicefragment == null) {
+                    linkDevicefragment = new LinkDeviceFragment();
+                }
+                fragment = linkDevicefragment;
                 title = getString(R.string.title_linkdevice);
-                nextfragment = -1;
+                nextfragment = 4;
                 previousfragment = 2;
                 break;
+            case 4:
+                if (emergencyfragment == null) {
+                    emergencyfragment = new EmergencyFragment();
+                }
+                fragment = emergencyfragment;
+                title = getString(R.string.title_emergency);
+                nextfragment = -1;
+                previousfragment = 3;
+                break;
+
+
             default:
                 break;
         }
@@ -191,6 +256,31 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
+
+        switch(requestCode) {
+            case (PICK_CONTACT):
+                if (resultCode == Activity.RESULT_OK) {
+                    Uri contactData = data.getData();
+                    Cursor c = managedQuery(contactData, null, null, null, null);
+                    if (c.moveToFirst()) {
+                        String id = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+
+                        String hasPhone =
+                                c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+
+                        if (hasPhone.equalsIgnoreCase("1")) {
+                            Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
+                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
+                            phones.moveToFirst();
+                            String cNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                            // Toast.makeText(getApplicationContext(), cNumber, Toast.LENGTH_SHORT).show();
+//                            setCn(cNumber);
+                        }
+                    }
+                }
+        }
+
+
     }
 
 }

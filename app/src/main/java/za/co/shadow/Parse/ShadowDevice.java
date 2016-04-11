@@ -18,7 +18,7 @@ import java.util.List;
 @ParseClassName("ShadowDevice")
 public class ShadowDevice extends ParseObject {
 
-    private Integer BlueToothDeviceID;
+    private String BlueToothDeviceID;
     private ParseUser user;
     private ParseUser parent;
 
@@ -54,16 +54,16 @@ public class ShadowDevice extends ParseObject {
         saveEventually();
     }
 
-    public Integer getBlueToothDeviceID() {
+    public String getBlueToothDeviceID() {
         if ((BlueToothDeviceID == null) && (this.get("BLEDeviceID") != null ))
         {
-            BlueToothDeviceID = (Integer)this.get("BLEDeviceID") ;
+            BlueToothDeviceID = (String)this.get("BLEDeviceID") ;
         }
-        else {BlueToothDeviceID = 0;}
+        else {BlueToothDeviceID = "";}
         return BlueToothDeviceID;
     }
 
-    public void setBlueToothDeviceID(Integer blueToothDeviceID) {
+    public void setBlueToothDeviceID(String blueToothDeviceID) {
         BlueToothDeviceID = blueToothDeviceID;
         this.put("BLEDeviceID", blueToothDeviceID);
     }

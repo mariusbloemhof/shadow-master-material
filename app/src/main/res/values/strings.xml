@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Material Design</string>
+    <string name="app_name">Shadow</string>
     <string name="action_settings">Settings</string>
     <string name="action_search">Search</string>
     <string name="drawer_open">Open</string>
@@ -28,6 +28,7 @@
     <string name="title_login">Login</string>
     <string name="title_location">Location</string>
     <string name="title_linkdevice">Link Shadow device</string>
+    <string name="title_emergency">Emergency setup</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

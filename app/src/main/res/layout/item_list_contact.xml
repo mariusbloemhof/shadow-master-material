@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/signup_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:paddingBottom="0dp"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        android:id="@+id/shadow_list"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/selector_card"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
+        <ImageView
+            android:id="@+id/thumbnail"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="2dp"
+            android:src="@drawable/ic_bluetooth_black_48dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/selector_card"
+            android:orientation="horizontal"
+            android:padding="3dp">
+
+
+            <TextView
+                android:id="@+id/textViewDevName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:paddingLeft="5dp"
+                android:text="@string/pair_shadow"
+                android:textColor="#222"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewDevProx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewDevName"
+                android:maxLines="1"
+                android:textStyle="italic"
+                android:paddingLeft="5dp"
+                android:text="Proximity: 0m"
+                android:textColor="@color/color_facebook_login_button"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/textViewDevAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewDevProx"
+                android:maxLines="3"
+                android:paddingLeft="5dp"
+                android:text="@string/pair_shadow_descr"
+                android:textColor="#666"
+                android:textSize="12dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/lineA"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="60dp"
+        android:background="@color/colorPrimaryLight"
+        android:orientation="vertical" />
+
+</LinearLayout>

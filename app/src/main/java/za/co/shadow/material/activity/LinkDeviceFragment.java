@@ -77,8 +77,6 @@ public class LinkDeviceFragment extends Fragment {
                 setConnectStatus(isConnected);
             }
         });
-//        bluetoothHandler.connect("D0:39:72:BF:70:F3");
-
         return view;
     }
 
@@ -133,6 +131,25 @@ public class LinkDeviceFragment extends Fragment {
                     BluetoothDevice device = bluetoothHandler.getDeviceListAdapter().getItem(position).device;
                     // connect
                     bluetoothHandler.connect(device.getAddress());
+                    ShadowDevice shadowdevice;
+                    ParseUser user = ParseUser.getCurrentUser();
+                    ParseQuery<ShadowDevice> query = ParseQuery.getQuery("ShadowDevice");
+                    query.whereEqualTo("user", user);
+                    try {
+                        List<ShadowDevice> results = query.find();
+                        if (results.size() > 0) {
+                            shadowdevice = results.get(0);
+                        }
+                        else {
+                            shadowdevice = new ShadowDevice();
+                        }
+                    }
+                    catch (ParseException e) {shadowdevice = new ShadowDevice();}
+                    String deviceID = device.getAddress().toString();
+                    shadowdevice.setBlueToothDeviceID(deviceID);
+                    shadowdevice.SaveLater();
+
+
                 }
             });
             bluetoothHandler.setOnScanListener(new BluetoothHandler.OnScanListener() {
