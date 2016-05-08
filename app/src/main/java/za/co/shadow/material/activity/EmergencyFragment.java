@@ -46,12 +46,12 @@ public class EmergencyFragment extends Fragment {
         btnaddContact = (Button) view.findViewById(R.id.btnAddcontact);
 
         btnaddContact.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
-                startActivityForResult(intent, MainActivity.PICK_CONTACT);
+        public void onClick(View v)
+        {
+            Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+            startActivityForResult(intent, MainActivity.PICK_CONTACT);
 
-            }});
+        }});
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
 //
