@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Achievement/Achievement.iml" filepath="$PROJECT_DIR$/Achievement/Achievement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecyclerView/RecyclerView.iml" filepath="$PROJECT_DIR$/RecyclerView/RecyclerView.iml" />
       <module fileurl="file://$PROJECT_DIR$/Shadow-master-material.iml" filepath="$PROJECT_DIR$/Shadow-master-material.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/blelib/blelib.iml" filepath="$PROJECT_DIR$/blelib/blelib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/robototextview/robototextview.iml" filepath="$PROJECT_DIR$/robototextview/robototextview.iml" />
     </modules>
   </component>
 </project>

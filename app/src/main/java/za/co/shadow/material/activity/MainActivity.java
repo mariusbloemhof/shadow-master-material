@@ -16,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,12 +39,13 @@ import za.co.shadow.Parse.ShadowDevice;
 import za.co.shadow.blelib.Constants;
 import za.co.shadow.blelib.ble.BluetoothHandler;
 import za.co.shadow.blelib.ble.BluetoothLeService;
+import za.co.shadow.constants;
 import za.co.shadow.material.R;
 
 public class MainActivity extends AppCompatActivity implements FragmentDrawer.FragmentDrawerListener {
 
     private static String TAG = MainActivity.class.getSimpleName();
-    public static final int PICK_CONTACT = 5;
+
 
     private Toolbar mToolbar;
     private FragmentDrawer drawerFragment;
@@ -164,12 +166,14 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     public void displayView(int position) {
         this.getSupportActionBar().show();
         Fragment fragment = null;
+        String tag = "";
         String title = getString(R.string.app_name);
         switch (position) {
             case 0:
                 this.getSupportActionBar().hide();
                 if (loginfragment == null) {
                     loginfragment = new LoginFragment();
+                    tag = constants.TAG_LOGIN_FRAGMENT;
                 }
                 fragment = loginfragment;
 
@@ -181,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             case 1:
                 if (signupfragment == null) {
                     signupfragment = new SignupFragment();
+                    tag = constants.TAG_SIGNUP_FRAGMENT;
                 }
                 fragment = signupfragment;
                 nextfragment = 2;
@@ -190,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             case 2:
                 if (locationfragment == null) {
                     locationfragment = new LocationFragment();
+                    tag = constants.TAG_LOCATION_FRAGMENT;
                 }
                 fragment = locationfragment;
                 nextfragment = 3;
@@ -200,6 +206,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             case 3:
                 if (linkDevicefragment == null) {
                     linkDevicefragment = new LinkDeviceFragment();
+                    tag = constants.TAG_LINK_DEVICE_FRAGMENT;
                 }
                 fragment = linkDevicefragment;
                 title = getString(R.string.title_linkdevice);
@@ -209,6 +216,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
             case 4:
                 if (emergencyfragment == null) {
                     emergencyfragment = new EmergencyFragment();
+                    tag = constants.TAG_EMERGENCY_FRAGMENT;
                 }
                 fragment = emergencyfragment;
                 title = getString(R.string.title_emergency);
@@ -224,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
         if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_body, fragment);
+            fragmentTransaction.replace(R.id.container_body, fragment, tag);
 //            fragmentTransaction.add(R.id.container_body, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
@@ -255,29 +263,33 @@ public class MainActivity extends AppCompatActivity implements FragmentDrawer.Fr
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        ParseFacebookUtils.onActivityResult(requestCode, resultCode, data);
 
-        switch(requestCode) {
-            case (PICK_CONTACT):
+        switch (requestCode) {
+            case (constants.PICK_CONTACT):
                 if (resultCode == Activity.RESULT_OK) {
-                    Uri contactData = data.getData();
-                    Cursor c = managedQuery(contactData, null, null, null, null);
-                    if (c.moveToFirst()) {
-                        String id = c.getString(c.getColumnIndexOrThrow(ContactsContract.Contacts._ID));
+                    Uri contactUri = data.getData();
+                    Cursor cursor = getContentResolver().query(contactUri, null, null, null, null);
+                    cursor.moveToFirst();
 
-                        String hasPhone =
-                                c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+                    String name;
+                    String phoneNo;
 
-                        if (hasPhone.equalsIgnoreCase("1")) {
-                            Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,
-                                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null);
-                            phones.moveToFirst();
-                            String cNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                            // Toast.makeText(getApplicationContext(), cNumber, Toast.LENGTH_SHORT).show();
-//                            setCn(cNumber);
-                        }
-                    }
+                    int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                    phoneNo = cursor.getString(column);
+                    column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+                    name = cursor.getString(column);
+
+                    Fragment fragment = getSupportFragmentManager().findFragmentByTag(constants.TAG_EMERGENCY_FRAGMENT);
+                    Log.d("phone number", cursor.getString(column));
+                    ((EmergencyFragment) fragment).getDataProvider().addContactItem(name, phoneNo);
+
+                    fragment = getSupportFragmentManager().findFragmentByTag(constants.FRAGMENT_LIST_VIEW);
+                    ((RecyclerListViewFragment) fragment).notifyDataSetChanged(0);
+
+
+
                 }
+
         }
 
 

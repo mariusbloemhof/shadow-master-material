@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "I:\\IVAULT\\Repositories\\Examples\\Android Ultimate\\Source\\AndroidUltimate\\robototextview\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_color_highlight_material.xml",
+        "source": "I:\\IVAULT\\Repositories\\Examples\\Android Ultimate\\Source\\AndroidUltimate\\robototextview\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\color-v23\\abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "I:\\IVAULT\\Repositories\\Shadow-master-material\\robototextview\\build\\intermediates\\res\\merged\\release\\color-v23\\abc_color_highlight_material.xml",
+        "source": "I:\\IVAULT\\Repositories\\Shadow-master-material\\robototextview\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\color-v23\\abc_color_highlight_material.xml"
+    }
+]

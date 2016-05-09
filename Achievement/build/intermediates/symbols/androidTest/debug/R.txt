@@ -1,0 +1,6 @@
+int id achievement_body 0x7f030000
+int id achievement_icon 0x7f030001
+int id achievement_main_view 0x7f030002
+int id achievement_subtitle 0x7f030003
+int id achievement_title 0x7f030004
+int layout achievement_layout 0x7f020000

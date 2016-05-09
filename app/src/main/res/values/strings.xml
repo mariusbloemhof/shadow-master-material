@@ -5,12 +5,8 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
 
-    <string name="nav_item_home">Home</string>
-    <string name="nav_item_friends">Friends</string>
-
     <string name="nav_item_login">Log in</string>
     <string name="nav_item_registration">Signup</string>
-    <string name="nav_item_notifications">Messages</string>
     <string name="nav_item_location">Location</string>
 
     <!-- navigation drawer item labels  -->
@@ -21,9 +17,6 @@
         <item>@string/title_linkdevice</item>
     </string-array>
 
-    <string name="title_messages">Messages</string>
-    <string name="title_friends">Friends</string>
-    <string name="title_home">Home</string>
     <string name="title_signup">Registration</string>
     <string name="title_login">Login</string>
     <string name="title_location">Location</string>
@@ -31,7 +24,6 @@
     <string name="title_emergency">Emergency setup</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="email_address_enter">Enter your email address</string>
     <string name="first_name">First Name</string>
@@ -39,16 +31,10 @@
     <string name="mobile_number">Mobile number</string>
     <string name="medical_aid_no">Medical Aid Member no</string>
     <string name="security_provider_contact">Security company contact no</string>
-    <string name="id_number">Id number</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="password_enter">Password</string>
     <string name="lnk_buy_shadow"> No SHADOW?<a href="http://www.google.com"><b><u> Buy now</u></b></a></string>
-    <string name="lnk_medical_provider_info"><a href="http://www.google.com"><u>  Why do we need this</u></a></string>
     <string name="lnk_forgot_password"><a href="http://www.google.com"><u> Existing account?</u></a></string>
-    <string name="title_activity_test">TestActivity</string>
-    <string name="register"><u>Register</u></string>
-
-    <string name="medical_aid_provider_prompt">Medical Aid Provider</string>
 
     <string-array name="medical_aid_provider_arrays">
         <item>Discovery Health</item>
@@ -70,16 +56,26 @@
     <string name="parse_client_key">YOUR_CLIENT_KEY</string>
 
     <string name="facebook_app_id">527907880696051</string>
-    <string name="title_activity_home_address">Map</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_address">AddressActivity</string>
 
     <string name="next">Next</string>
     <string name="prev">Previous</string>
-    <string name="finish">Submit</string>
-    <string name="review">Review</string>
 
     <string name="pair_shadow">Pair your Shadow device</string>
     <string name="pair_shadow_descr">You need to pair your Shadow device in order to complete the setup process. </string>
+
+    <string name="snack_bar_text_group_item_removed">1 group item removed</string>
+    <string name="snack_bar_action_undo">UNDO</string>
+    <string name="snack_bar_text_child_item_removed">1 child item removed</string>
+
+    <string name="dialog_message_group_item_pinned">Group item pinned! (group = %1$d)</string>
+
+    <string name="dialog_message_child_item_pinned">Child item pinned! (group = %1$d, child = %2$d)</string>
+
+    <string name="dialog_message_item_pinned">Item pinned! (position = %1$d)</string>
+
+    <string name="prefs_theme_key">theme</string>
+    <string name="default_message">Help me. I am in trouble!</string>
 
 </resources>

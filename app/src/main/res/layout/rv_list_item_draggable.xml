@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/commonListItemStyle"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_height"
+    android:background="@drawable/bg_swipe_item_neutral">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground">
+
+        <View
+            android:id="@+id/drag_handle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|left"
+            android:background="#20000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="0dp"
+            android:gravity="left">
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_phone_white_36dp"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:id="@android:id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".35"
+                android:textSize="16dp"
+                android:fontFamily="Roboto Regular"
+                android:textColor="@android:color/white"
+                android:text="Jan Adriaan Petrus Jacobus van der wezthuizen"
+                android:textAlignment="viewStart"
+                tools:ignore="RtlHardcoded"
+                android:focusableInTouchMode="true"
+                android:layout_marginLeft="16dp"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@android:id/text2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_weight=".50"
+                android:text="0828112548"
+                android:textSize="13dp"
+                android:fontFamily="Roboto Regular"
+                android:textColor="@android:color/white"
+                android:gravity="center_vertical"
+                android:layout_gravity="center"
+
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</FrameLayout>

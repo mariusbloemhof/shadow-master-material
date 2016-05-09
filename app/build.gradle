@@ -45,15 +45,22 @@ dependencies {
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'com.parse:parse-android:1.10.1'
     compile 'com.facebook.android:facebook-android-sdk:+'
-    compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
-    compile 'com.android.support:design:24.0.0-alpha1'
-    compile 'com.android.support:support-v4:24.0.0-alpha1'
+//    compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
+    compile 'com.android.support:appcompat-v7:23.0.0'
+//    compile 'com.android.support:design:24.0.0-alpha1'
+    compile 'com.android.support:design:23.0.0'
+    compile 'com.android.support:support-v4:23.0.0'
+//    compile 'com.android.support:support-v4:24.0.0-alpha1'
     compile 'com.google.android.gms:play-services-gcm:8.4.0'
     compile 'com.google.android.gms:play-services-location:+'
     compile 'com.google.android.gms:play-services-maps:8.4.0'
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:cardview-v7:21.0.+'
-    compile 'com.android.support:recyclerview-v7:21.0.+'
-
+//    compile 'com.android.support:cardview-v7:21.0.+'
+    compile 'com.android.support:cardview-v7:23.0.+'
+//    compile 'com.android.support:recyclerview-v7:21.0.+'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
+    compile project(':RecyclerView')
+    compile project(':robototextview')
+    compile project(':Achievement')
     compile project(':blelib')
 }
